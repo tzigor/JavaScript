@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--
+Обязательное задание.
+
+Необходимо пользователя попросить ввести температуру в градусах Цельсия,
+преобразовать введенное пользователем значение в соответствующую температуру
+в градусах по Фаренгейту и вывести в alert сообщение с текстом:
+"Цельсий: {C}, Фаренгейт: {F}"
+Где вместо {C} и {F} должны быть подставлены соответствующие значения, которые
+были получены ранее.
+Формула перевода градусов Цельсия в градусы Фаренгейта:
+градусы Фаренгейта = (9 / 5) * градусы Цельсия + 32
+
+Уточнение: пользователь всегда вводит корректное число.
+-->
+    <script>
+        "use strict";
+        const tempCelsius = prompt('Input temperature in celsius:');
+        const tempFahrenheit = (9 / 5) * Number.parseFloat(tempCelsius) + 32;
+        if (isNaN(tempFahrenheit)) {
+            console.log('Incorrect input data (Not a number)');
+        } else {
+            console.log(`Celsuius: ${tempCelsius}, Fahrenheit: ${tempFahrenheit.toFixed(2)}`);
+        }
+    </script>
+</body>
+
+</html>
