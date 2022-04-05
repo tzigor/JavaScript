@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!--
 Обязательное задание.
 
 Необходимо реализовать четыре функции, каждая функция должна принимать по два
@@ -28,10 +30,62 @@
 
 Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
+    const a = +prompt('Введите первое число:');
+    const b = +prompt('Введите второе число:');
+
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+      console.log('Одно из введенных числел - не число :)');
+    } else {
+      console.log(`Sum of two numbers: ${sum(a, b)}`);
+      console.log(`Difference of two numbers: ${diff(a, b)}`);
+      console.log(`Multiplication of two numbers: ${mult(a, b)}`);
+      console.log(`Division of two numbers: ${div(a, b)}`);
+    }
+
+    /**
+     * Sum of two numbers
+     * @param {number} a - The a value.
+     * @param {number} b - The b value.
+     * @return {number} a + b
+     */
+    function sum(a, b) {
+      return a + b;
+    }
+
+    /**
+     * Difference of two numbers
+     * @param {number} a - The a value.
+     * @param {number} b - The b value.
+     * @return {number} Difference of a and b
+     */
+    function diff(a, b) {
+      return Math.abs(a - b);
+    }
+
+    /**
+     * Multiplication  of two numbers
+     * @param {number} a - The a value.
+     * @param {number} b - The b value.
+     * @return {number} a * b
+     */
+    function mult(a, b) {
+      return a * b;
+    }
+
+    /**
+     * Division of two numbers
+     * @param {number} a - The a value.
+     * @param {number} b - The b value.
+     * @return {number} a / b
+     */
+    function div(a, b) {
+      return a / b;
+    }
+
+  </script>
 </body>
+
 </html>

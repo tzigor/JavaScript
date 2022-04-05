@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!--
 Обязательное задание.
 
 Необходимо попросить пользователя ввести два числа в переменные `a` и `b`.
@@ -18,10 +20,24 @@
 `a` и `b`.
 В остальных случаях программа не должна ничего выводить.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
+    const a = +prompt('Введите первое число:');
+    const b = +prompt('Введите второе число:');
+
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+      console.log('Одно из введенных числел - не число :)');
+    } else {
+      if (a > 0 && b > 0) {
+        console.log(`Разность введённых чисел: ${a - b}`);
+      } else if (a < 0 && b < 0) {
+        console.log(`Произведение введённых чисел: ${a * b}`);
+      } else if (a * b < 0) {
+        console.log(`Сумма введённых чисел: ${a + b}`);
+      }
+    }
+  </script>
 </body>
+
 </html>

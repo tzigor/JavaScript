@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!--
 Необязательное задание.
 
 Необходимо реализовать функцию, которая будет принимать первым аргументом
@@ -22,25 +24,36 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
 Функция должна работать с любым словом и любым целым положительным числом.
 Все аргументы, которые будут передаваться функции будут верны.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  function declinationOfNumber(count, one, two, five) {
+    for (let i = 0; i < 200; i++) {
+      const applesNumber = i;
+      const word = declinationOfNumber(applesNumber, "смартфон", "смартфона", "смартфонов");
+      console.log(`У меня есть ${applesNumber} ${word}.`);
+    }
 
-  }
+    /**
+     * A strange function doing something with words
+     * @param {number} count - Count of things.
+     * @param {string} one - The first word.
+     * @param {string} two - The second word.
+     * @param {string} five - The third word.
+     * @return {string} A word according to 'count' parameter
+     */
+    function declinationOfNumber(count, one, two, five) {
+      const lastDigit = count % 10;
 
-  // Число яблок, можно пробовать поставить свое целое, положительное число.
-  const applesNumber = 5;
-  // Получаем от функции одно из слов "яблоко", "яблока" или "яблок".
-  const word = declinationOfNumber(applesNumber, "яблоко", "яблока", "яблок");
-  // Выводим корректную строку, например:
-  // "У меня есть 1 яблоко."
-  // "У меня есть 2 яблока."
-  // "У меня есть 5 яблок."
-  // При любом целом, положительном числе в applesNumber, строка, которая
-  // выводится в console.log, должна иметь правильное склонение слова "яблоко".
-  console.log(`У меня есть ${applesNumber} ${word}.`);
-
-</script>
+      if (lastDigit === 1 && count !== 11) {
+        return one
+      }
+      if ((lastDigit === 2 || lastDigit === 3 || lastDigit === 4)
+        && (count !== 12 && count !== 13 && count !== 14)) {
+        return two
+      }
+      return five;
+    }
+  </script>
 </body>
+
 </html>
