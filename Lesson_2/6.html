@@ -27,9 +27,10 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
   <script>
     "use strict";
 
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 600; i++) {
       const applesNumber = i;
-      const word = declinationOfNumber(applesNumber, "смартфон", "смартфона", "смартфонов");
+      const word = declinationOfNumber(applesNumber, "смартфон", "смартфона",
+        "смартфонов");
       console.log(`У меня есть ${applesNumber} ${word}.`);
     }
 
@@ -44,12 +45,12 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
     function declinationOfNumber(count, one, two, five) {
       const lastDigit = count % 10;
 
-      if (lastDigit === 1 && count !== 11) {
-        return one
+      if (lastDigit === 1 && (count % 100) !== 11) {
+        return one;
       }
-      if ((lastDigit === 2 || lastDigit === 3 || lastDigit === 4)
-        && (count !== 12 && count !== 13 && count !== 14)) {
-        return two
+      if ((lastDigit === 2 || lastDigit === 3 || lastDigit === 4) &&
+        ((count % 100) !== 12 && (count % 100) !== 13 && (count % 100) !== 14)) {
+        return two;
       }
       return five;
     }
