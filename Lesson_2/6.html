@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+
+<body>
+  <!--
+Необязательное задание.
+
+Необходимо реализовать функцию, которая будет принимать первым аргументом
+целое положительное число, в следующих трех аргументах функция принимает слова
+в разных склонениях.
+Функция должна возвращать одно из трех переданных в параметры слов подходящее
+под число, которое передано первым аргументом.
+
+Пример:
+console.log(declinationOfNumber(1, "яблоко", "яблока", "яблок")); // "яблоко"
+console.log(declinationOfNumber(2, "мяч", "мяча", "мячей")); // "мяча"
+console.log(declinationOfNumber(5, "стул", "стула", "стульев")); // "стульев"
+
+Функция должна работать с любым словом и любым целым положительным числом.
+Все аргументы, которые будут передаваться функции будут верны.
+-->
+  <script>
+    "use strict";
+
+    for (let i = 0; i < 600; i++) {
+      const applesNumber = i;
+      const word = declinationOfNumber(applesNumber, "смартфон", "смартфона",
+        "смартфонов");
+      console.log(`У меня есть ${applesNumber} ${word}.`);
+    }
+
+    /**
+     * A strange function doing something with words
+     * @param {number} count - Count of things.
+     * @param {string} one - The first word.
+     * @param {string} two - The second word.
+     * @param {string} five - The third word.
+     * @return {string} A word according to 'count' parameter
+     */
+    function declinationOfNumber(count, one, two, five) {
+      const lastDigit = count % 10;
+
+      if (lastDigit === 1 && (count % 100) !== 11) {
+        return one;
+      }
+      if ((lastDigit === 2 || lastDigit === 3 || lastDigit === 4) &&
+        ((count % 100) !== 12 && (count % 100) !== 13 && (count % 100) !== 14)) {
+        return two;
+      }
+      return five;
+    }
+  </script>
+</body>
+
+</html>
