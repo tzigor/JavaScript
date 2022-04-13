@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!--
 Обязательное задание.
 
 Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
@@ -47,10 +49,125 @@
 что-нибудь пропустить.
 4. Если непонятно условие - задайте вопрос.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
+    /** Object representing a social media post*/
+    function PostES5(author, text) {
+      this.author = author;
+      this.text = text;
+      this.lastUpdate = new Date();
+    }
+
+    /**
+     * Text editor
+     */
+    PostES5.prototype.textEdit = function (text) {
+      this.text = text;
+      this.lastUpdate = new Date();
+    }
+
+    /**
+     * Print out post information
+     */
+    PostES5.prototype.getPostData = function () {
+      console.log(`${this.author} wrote:`);
+      console.log(this.text);
+      console.log(`\nLast update: ${this.lastUpdate}`);
+    }
+
+    function AttachedPostES5(author, text) {
+      PostES5.call(this, author, text); // Наследуем свойства из PostES5
+      this.highlighted = false;
+    }
+
+    // Наследуем методы PostES5
+    AttachedPostES5.prototype = Object.create(PostES5.prototype);
+
+    // Восстанавливаем конструктор
+    AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+    /**
+     * Make then text highlighted
+     */
+    AttachedPostES5.prototype.makeTextHighlighted = function () {
+      this.highlighted = true;
+    }
+
+    /** Class representing a social media post*/
+    class PostES6 {
+      constructor(author, text) {
+        this.author = author;
+        this.text = text;
+        this.lastUpdate = new Date();
+      }
+
+      /**
+       * Text editor
+       */
+      textEdit = function (text) {
+        this.text = text;
+        this.lastUpdate = new Date();
+      }
+
+      /**
+       * Print out post information
+       */
+      getPostData = function () {
+        console.log(`${this.author} wrote:`);
+        console.log(this.text);
+        console.log(`\nLast update: ${this.lastUpdate}`);
+      }
+    }
+
+    /** Class representing an attached social media post*/
+    class AttachedPostES6 extends PostES6 {
+      constructor(author, text) {
+        super(author, text);
+        this.highlighted = false;
+      }
+
+      /**
+       * Make then text highlighted
+       */
+      makeTextHighlighted() {
+        this.highlighted = true;
+      }
+    }
+
+    const postES5 = new PostES5("Igor", "JavaScript.com is a resource for the JavaScript community.");
+    const postES6 = new PostES6("Svetlana", "JavaScript is the programming language of the Web. JavaScript is easy to learn. ");
+    const attachedPostES5 = new AttachedPostES5("Alexander", "Some text to be highlighted");
+    const attachedPostES6 = new AttachedPostES6("Polina", "Some more text to be highlighted");
+
+    postES5.getPostData();
+    console.log('\n');
+    postES5.textEdit("Встречайте новый встроенный объект: Date.Он содержит дату и время, а также предоставляет методы управления ими.");
+    postES5.getPostData();
+
+    console.log('\n');
+    postES6.getPostData();
+    console.log('\n');
+    postES6.textEdit("Существуют методы получения года, месяца и т.д. из объекта Date:");
+    postES6.getPostData();
+
+    console.log('\n');
+    attachedPostES5.getPostData();
+    attachedPostES5.makeTextHighlighted();
+    if (attachedPostES5.highlighted) {
+      attachedPostES5.text = attachedPostES5.text.toUpperCase();
+    }
+    console.log('\n');
+    attachedPostES5.getPostData();
+
+    console.log('\n');
+    attachedPostES6.getPostData();
+    attachedPostES6.makeTextHighlighted();
+    attachedPostES6.text = attachedPostES6.highlighted ?
+      attachedPostES6.text.toUpperCase() : attachedPostES6.text;
+    console.log('\n');
+    attachedPostES6.getPostData();
+  </script>
 </body>
+
 </html>
