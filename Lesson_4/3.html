@@ -35,11 +35,9 @@
 
     //** Клсс, представляющий количество единиц, десяток и сотен
     class DigitsOfNumber {
-      constructor() {
-        this.units = 0;
-        this.dozens = 0;
-        this.hundreds = 0;
-      }
+      units = 0;
+      tdozens = 0;
+      hundreds = 0;
 
       /**
        * Метод высчитывет количество единиц, десяток и сотен в числе
@@ -47,7 +45,7 @@
        * @returns {object} - объект с количеством единиц, десяток и сотен.
        * выдает пустой объект в случае ошибочного ввода
        */
-      getDigitsOfNumber(aNumber) {
+      setDigitsOfNumber(aNumber) {
         if (aNumber > 999 || aNumber < 0 || !Number.isInteger(aNumber)) {
           console.error(aNumber + ": The number is out of range or not a number");
           return {};
@@ -61,7 +59,7 @@
 
     const digitsOfNumber = new DigitsOfNumber();
     const userNumber = +prompt('Input a number from 0 to 999:');
-    console.log(digitsOfNumber.getDigitsOfNumber(userNumber));
+    console.log(digitsOfNumber.setDigitsOfNumber(userNumber));
 
   </script>
 </body>

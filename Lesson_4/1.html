@@ -33,14 +33,14 @@
      */
     ProductES5.prototype.make25Discount = function () {
       this.itemPrice -= this.itemPrice * 0.25;
-    }
+    };
 
     /**
      * Print out item's price
      */
-    ProductES5.prototype.getItemPrice = function () {
+    ProductES5.prototype.printItemPrice = function () {
       console.log(`${this.itemName} price = ${this.itemPrice}`);
-    }
+    };
 
     /** Class representing a product*/
     class ProductES6 {
@@ -52,14 +52,14 @@
       /**
        * Reduses price by 25%
        */
-      make25Discount = function () {
+      make25Discount() {
         this.itemPrice -= this.itemPrice * 0.25;
       }
 
       /**
        * Print out item's price
        */
-      getItemPrice = function () {
+      printItemPrice() {
         console.log(`${this.itemName} price = ${this.itemPrice}`);
       }
     }
@@ -69,14 +69,14 @@
     const productES6 = new ProductES6("Mango", 300);
 
     console.log("ES5 style");
-    productES5.getItemPrice();
+    productES5.printItemPrice();
     productES5.make25Discount();
-    productES5.getItemPrice();
+    productES5.printItemPrice();
 
     console.log("\nES6 style");
-    productES6.getItemPrice();
+    productES6.printItemPrice();
     productES6.make25Discount();
-    productES6.getItemPrice();
+    productES6.printItemPrice();
   </script>
 </body>
 

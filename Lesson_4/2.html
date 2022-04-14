@@ -65,16 +65,16 @@
     PostES5.prototype.textEdit = function (text) {
       this.text = text;
       this.lastUpdate = new Date();
-    }
+    };
 
     /**
      * Print out post information
      */
-    PostES5.prototype.getPostData = function () {
+    PostES5.prototype.printPostData = function () {
       console.log(`${this.author} wrote:`);
       console.log(this.text);
       console.log(`\nLast update: ${this.lastUpdate}`);
-    }
+    };
 
     function AttachedPostES5(author, text) {
       PostES5.call(this, author, text); // Наследуем свойства из PostES5
@@ -92,6 +92,7 @@
      */
     AttachedPostES5.prototype.makeTextHighlighted = function () {
       this.highlighted = true;
+      this.lastUpdate = new Date();
     }
 
     /** Class representing a social media post*/
@@ -105,7 +106,7 @@
       /**
        * Text editor
        */
-      textEdit = function (text) {
+      textEdit(text) {
         this.text = text;
         this.lastUpdate = new Date();
       }
@@ -113,7 +114,7 @@
       /**
        * Print out post information
        */
-      getPostData = function () {
+      printPostData() {
         console.log(`${this.author} wrote:`);
         console.log(this.text);
         console.log(`\nLast update: ${this.lastUpdate}`);
@@ -132,6 +133,7 @@
        */
       makeTextHighlighted() {
         this.highlighted = true;
+        PostES6.lastUpdate = new Date();
       }
     }
 
@@ -140,33 +142,33 @@
     const attachedPostES5 = new AttachedPostES5("Alexander", "Some text to be highlighted");
     const attachedPostES6 = new AttachedPostES6("Polina", "Some more text to be highlighted");
 
-    postES5.getPostData();
+    postES5.printPostData();
     console.log('\n');
     postES5.textEdit("Встречайте новый встроенный объект: Date.Он содержит дату и время, а также предоставляет методы управления ими.");
-    postES5.getPostData();
+    postES5.printPostData();
 
     console.log('\n');
-    postES6.getPostData();
+    postES6.printPostData();
     console.log('\n');
     postES6.textEdit("Существуют методы получения года, месяца и т.д. из объекта Date:");
-    postES6.getPostData();
+    postES6.printPostData();
 
     console.log('\n');
-    attachedPostES5.getPostData();
+    attachedPostES5.printPostData();
     attachedPostES5.makeTextHighlighted();
     if (attachedPostES5.highlighted) {
       attachedPostES5.text = attachedPostES5.text.toUpperCase();
     }
     console.log('\n');
-    attachedPostES5.getPostData();
+    attachedPostES5.printPostData();
 
     console.log('\n');
-    attachedPostES6.getPostData();
+    attachedPostES6.printPostData();
     attachedPostES6.makeTextHighlighted();
     attachedPostES6.text = attachedPostES6.highlighted ?
       attachedPostES6.text.toUpperCase() : attachedPostES6.text;
     console.log('\n');
-    attachedPostES6.getPostData();
+    attachedPostES6.printPostData();
   </script>
 </body>
 
