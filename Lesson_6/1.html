@@ -76,8 +76,7 @@
     productCopy.querySelector('img').src = 'https://picsum.photos/id/1080/200/300';
     productCopy.querySelector('.productName').textContent = 'Товар 4';
     const productEls = document.querySelectorAll('.product');
-    productEls[productEls.length - 1].remove();
-    document.querySelector('script').insertAdjacentElement("beforeBegin", productCopy);
+    productEls[productEls.length - 1].replaceWith(productCopy);
 
     /*
     5. По истечению 2 секунд с момента открытия страницы первый товар должен быть
