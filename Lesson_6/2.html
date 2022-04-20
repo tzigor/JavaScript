@@ -70,7 +70,7 @@
     */
     const spanEl = document.querySelector('span');
     document.getElementById('from').
-      addEventListener('input', () => spanEl.textContent = inputEl.value);
+      addEventListener('input', event => spanEl.textContent = event.target.value);
 
     /*
 
@@ -113,7 +113,7 @@
     formInputEl.addEventListener('input', () => isEmpty(formInputEl));
     formSelectEl.addEventListener('input', () => isEmpty(formSelectEl));
 
-    formEl.addEventListener('submit', () => {
+    formEl.addEventListener('submit', event => {
       // если хорошо читается и всё понятно, то я обхожусь без '{}'
       if (isEmpty(formInputEl)) event.preventDefault();
       if (isEmpty(formSelectEl)) event.preventDefault();
