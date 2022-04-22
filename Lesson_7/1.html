@@ -68,11 +68,9 @@
       if (event.target.tagName === 'A') {
         navLinkEls.forEach(navLinkEl => navLinkEl.classList.remove('active'));
         event.target.classList.add('active');
-        console.log(event.target.parentNode.dataset.text);
-        const propery = event.target.parentNode.dataset.text;
-        console.log(panelText);
+        document.querySelector('.text').
+          textContent = panelText[event.target.parentNode.dataset.text];
       }
-
     });
 
     /*
@@ -81,7 +79,12 @@
     шрифт у текста, никакого резкого увеличения шрифта не должно быть при
     перетаскивании ползунка.
      */
+    const inputDivEl = document.getElementById('inputDiv');
+    const inputEl = document.querySelector('input');
+    inputEl.value = parseInt(getComputedStyle(inputDivEl).fontSize);
 
+    inputEl.addEventListener('input', event =>
+      inputDivEl.style.fontSize = event.target.value + 'px');
 
   </script>
 </body>
