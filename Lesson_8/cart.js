@@ -13,20 +13,28 @@ class Product {
 }
 
 let cart = []; // Сюда будем добавлять выбранные продукты
-let totalCost = 0;
-let productCount = 0;
+let totalCost = 0; // Общая сумма заказа
+let productCount = 0; // Количество товаров в корзине
 
 /**
  * Функция округляет число до 2-х знаков после запятой
+ * @param {num: number or string} число для округления
+ * @returns {number} Число окурглённое до 2-х знаков
  */
 function toFixed2(num) {
-    let number = 0;
-    number = +num;
+    const number = +num;
     return number.toFixed(2);
 }
 
+// Слушаем клик по корзинке
+const cartContentEl = document.querySelector('.cartContent');
+document.querySelector('.cartIconWrap').addEventListener('click', () => {
+    cartContentEl.classList.toggle('hide');
+});
+
 /**
- * Функция добавления выбранного товара
+ * Метод добавления выбранного товара
+ * @param {id: number, name: string, price: number} параметры товара
  */
 function addToCart(id, name, price) {
     // Проверяем, есть ли уже такой товар в массиве
@@ -38,12 +46,16 @@ function addToCart(id, name, price) {
         if (product.id === id) {
             productExist = true;
             product.qty++; // если уже есть, до добавляем кол-во
+            // ищем нужную строку в блоке корзинки и редактируем содержимое
             cartLineEls.forEach(cartLine => {
                 if (cartLine.dataset.id === id) {
-                    cartLine.querySelector('.productQty').textContent = product.qty + 'шт.';
-                    cartLine.querySelector('.price').textContent = '$' + toFixed2(product.price);
-                    cartLine.querySelector('.totalPrice').textContent = '$' + toFixed2(product.price * product.qty);
-                    totalCost += product.price * product.qty;
+                    cartLine.querySelector('.productQty').
+                        textContent = product.qty + 'шт.';
+                    cartLine.querySelector('.price').
+                        textContent = '$' + toFixed2(price);
+                    cartLine.querySelector('.totalPrice').
+                        textContent = '$' + toFixed2(price * product.qty);
+                    totalCost += price * product.qty;
                 }
             });
         }
@@ -64,7 +76,6 @@ function addToCart(id, name, price) {
     document.querySelector('.totalCost').textContent = '$' + totalCost.toFixed(2);
     document.querySelector('.productCount').textContent = productCount;
 }
-
 
 document.querySelector('.featuredItems').addEventListener('click', event => {
     if (event.target.tagName === 'BUTTON') {
