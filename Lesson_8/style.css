@@ -17,6 +17,7 @@ body {
 }
 
 .cartContent {
+    z-index: 2;
     position: absolute;
     top: 40px;
     right: 0;
