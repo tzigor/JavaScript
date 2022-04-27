@@ -16,16 +16,6 @@ let cart = []; // Сюда будем добавлять выбранные пр
 let totalCost = 0; // Общая сумма заказа
 let productCount = 0; // Количество товаров в корзине
 
-/**
- * Функция округляет число до 2-х знаков после запятой
- * @param {num: number or string} число для округления
- * @returns {number} Число окурглённое до 2-х знаков
- */
-function toFixed2(num) {
-    const number = +num;
-    return number.toFixed(2);
-}
-
 // Слушаем клик по корзинке
 const cartContentEl = document.querySelector('.cartContent');
 document.querySelector('.cartIconWrap').addEventListener('click', () => {
@@ -37,11 +27,10 @@ document.querySelector('.cartIconWrap').addEventListener('click', () => {
  * @param {id: number, name: string, price: number} параметры товара
  */
 function addToCart(id, name, price) {
-    // Проверяем, есть ли уже такой товар в массиве
-    productCount++;
+    productCount++; // раз мы сюда попали, то товар мы точно добавили
     const cartLineEls = document.querySelectorAll('.cartLine');
     let productExist = false;
-    let productQty = 1;
+    // Проверяем, есть ли уже такой товар в массиве
     cart.forEach(product => {
         if (product.id === id) {
             productExist = true;
@@ -52,38 +41,43 @@ function addToCart(id, name, price) {
                     cartLine.querySelector('.productQty').
                         textContent = product.qty + 'шт.';
                     cartLine.querySelector('.price').
-                        textContent = '$' + toFixed2(price);
+                        textContent = '$' + price.toFixed(2);
                     cartLine.querySelector('.totalPrice').
-                        textContent = '$' + toFixed2(price * product.qty);
+                        textContent = '$' + (price * product.qty).toFixed(2);
                     totalCost += price * product.qty;
                 }
             });
         }
     });
-    // Если нет, то добавляем
+    // Если такого товара в нашем массиве нет, то добавляем
     if (!productExist) {
         cart.push(new Product(id, name, price));
         let newLine = document.createElement('div');
         // Формируем новую строку продуктов в окне корзины
         newLine.innerHTML = `<div class="cartLine" data-id="${id}">` +
             `<div>${name}</div>` +
-            `<div class="productQty">${productQty} шт.</div>` +
-            `<div class="price">$${toFixed2(price)}</div>` +
-            `<div class="totalPrice">$${toFixed2(price * productQty)}</div></div>`;
+            `<div class="productQty">1 шт.</div>` +
+            `<div class="price">$${price.toFixed(2)}</div>` +
+            `<div class="totalPrice">$${price.toFixed(2)}</div></div>`;
         document.querySelector('.cartHeader').after(newLine);
-        totalCost += price * productQty;
+        totalCost += price;
     }
+    // показываем общие параметры корзины: общую цену и количество
     document.querySelector('.totalCost').textContent = '$' + totalCost.toFixed(2);
     document.querySelector('.productCount').textContent = productCount;
 }
 
+// Тут слушаем клики внутри блока "featuredItems" отбрасывая лишние кнопки вовне
 document.querySelector('.featuredItems').addEventListener('click', event => {
     if (event.target.tagName === 'BUTTON') {
         // Тут мы ищем главного родителя нажатой кнопки
-        let card = event.target;
-        while (!card.classList.contains('featuredItem')) {
-            card = card.parentNode;
-        }
-        addToCart(card.dataset.id, card.dataset.name, card.dataset.price);
+        // сначала сделал так, но потом нашел вариант попроще 
+        // while (!card.classList.contains('featuredItem')) {
+        //     card = card.parentNode;
+        // }
+        let card = event.target.closest('.featuredItem');
+        // если всё срослось, добавим товар
+        if (card !== null)
+            addToCart(card.dataset.id, card.dataset.name, +card.dataset.price);
     }
 })
