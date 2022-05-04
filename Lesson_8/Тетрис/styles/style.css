@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Lato:wght@300;400;700&family=Montserrat:wght@600;700&family=Play:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+    --mainBgColor: #cfcfcf;
+    --bordBgColor: rgb(248, 250, 252);
+    --darkBack: rgb(48, 48, 48);
+    --lightBack: rgb(248, 250, 252);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.game {
+    background-image: url("back1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header {
+    font-family: 'Goldman', cursive;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding-left: 50px;
+    color: blue;
+    background-color: rgb(238, 244, 255);
+    font-size: 40px;
+}
+
+.logo {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.info {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.score {
+    color: white;
+    font-size: 26px;
+    text-shadow: black 0 0 3px;
+}
+
+.level {
+    color: white;
+    background-color: inherit;
+    font-size: 26px;
+    margin-left: 100px;
+    text-shadow: black 0 0 3px;
+}
+
+.gameBoard {
+    display: flex;
+    padding-bottom: 30px;
+    justify-content: center;
+    position: relative;
+}
+
+.gameContainer {
+    margin-right: 30px;
+}
+
+.hide {
+    display: none;
+}
+
+.pause {
+    text-align: center;
+    padding-top: 200px;
+    color: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    font-size: 64px;
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.gameOver {
+    text-align: center;
+    padding-top: 200px;
+    color: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    font-size: 64px;
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.navigation {
+    height: inherit;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.nextBlock {}
+
+.sizeSelector {}
+
+.bordSize:hover {
+    cursor: pointer;
+}
+
+.bordSize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
+    height: 30px;
+    font-size: 18px;
+    color: black;
+    border-radius: 5px;
+    background-color: var(--mainBgColor);
+    opacity: 0.5;
+    border: 1px solid rgb(153, 153, 153);
+}
+
+.sizeSelected {
+    background-color: white;
+    opacity: 1;
+}
+
+.cellSelector {
+    margin-top: 10px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.checked {
+    margin-left: 20px;
+}
+
+.large {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--mainBgColor);
+    opacity: 0.5;
+    border: 1px solid rgb(153, 153, 153);
+}
+
+.medium {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
+    border-radius: 5px;
+    background-color: var(--mainBgColor);
+    opacity: 0.5;
+    border: 1px solid rgb(153, 153, 153);
+}
+
+.small {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
+    border-radius: 5px;
+    background-color: var(--mainBgColor);
+    opacity: 0.5;
+    border: 1px solid rgb(153, 153, 153);
+}
+
+.checkedSize {
+    background-color: white;
+    opacity: 1;
+}
+
+.largeImg {
+    height: 30px;
+}
+
+.mediumImg {
+    height: 25px;
+}
+
+.smallImg {
+    height: 20px;
+}
+
+.nextHead {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-shadow: black 0 0 2px;
+}
+
+.btnGrid {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    align-self: center;
+    background-color: var(--lightBack);
+}
+
+.imgGrid {
+    width: 40px;
+}
+
+.btnNewGame {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    align-self: center;
+    font-size: 24px;
+    color: blue;
+    border-radius: 5px;
+    border: 2px solid white;
+    border-style: outset;
+}
+
+.btnPause {
+    margin-top: 5px;
+    height: 30px;
+    width: 200px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid white;
+    border-style: outset;
+}
+
+.shadow {
+    box-shadow: 10px 10px 12px 0px rgba(34, 60, 80, 0.53);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.tableLight {
+    background: var(--lightBack);
+}
+
+.tableDark {
+    background: var(--darkBack);
+}
+
+.tdBorder {
+    border: 1px solid var(--mainBgColor);
+}
+
+.tdSizeL {
+    width: 30px;
+    height: 30px;
+}
+
+.tdSizeM {
+    width: 25px;
+    height: 25px;
+}
+
+.tdSizeS {
+    width: 20px;
+    height: 20px;
+}
+
+.lowerNav {}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+
+.imgSize {
+    height: 13px;
+}
+
+.btnArrow {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgb(77, 77, 77);
+}
+
+.arowContols {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnSpace {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgb(77, 77, 77);
+}
+
+.blockLight {
+    background: var(--lightBack);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.blockDark {
+    background: var(--darkBack);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nextBlockBG {
+    /*background: var(--mainBgColor);*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.block0 {}
+
+.block1 {
+    background-image: url("Green.png");
+}
+
+.block2 {
+    background-image: url("Yellow.png");
+}
+
+.block3 {
+    background-image: url("Red.png");
+}
+
+.block4 {
+    background-image: url("Cian.png");
+}
+
+.block5 {
+    background-image: url("Brown.png");
+}
+
+.block6 {
+    background-image: url("Pink.png");
+}
+
+.block7 {
+    background-image: url("Blue.png");
+}
+
+.footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    background-color: black;
+    color: rgb(189, 189, 189);
+    padding-left: 30px;
+    font-size: 14px;
+    line-height: 14px;
+}
